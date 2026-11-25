@@ -10,3 +10,5 @@ uploads/*
 !uploads/thumbs/
 uploads/thumbs/*
 !uploads/thumbs/.gitkeep
+# Seed script holds the test accounts, so it stays local
+db/seed.py

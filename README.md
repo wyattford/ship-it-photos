@@ -30,7 +30,7 @@ uv run python db/seed.py
 cd web && deno install
 ```
 
-`db/seed.py` **drops and recreates all tables** and downloads photos from Lorem Picsum. Every seeded user
+`db/seed.py` is kept local (gitignored), so a fresh clone doesn't include it. It **drops and recreates all tables** and downloads photos from Lorem Picsum. Every seeded user
 (e.g. `mara_lens`, `old_town_owen`) has the test password set in `db/seed.py`.
 
 ## Run (development: two terminals)
