@@ -1,0 +1,12 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+node_modules/
+web/dist/
+uploads/*
+!uploads/.gitkeep
+!uploads/thumbs/
+uploads/thumbs/*
+!uploads/thumbs/.gitkeep

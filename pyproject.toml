@@ -1,0 +1,14 @@
+[project]
+name = "ship-it-photos"
+version = "0.1.0"
+requires-python = ">=3.13"
+dependencies = [
+    "argon2-cffi>=25.1.0",
+    "fastapi>=0.165.0",
+    "httpx>=0.28.1",
+    "mssql-python>=1.18.0",
+    "pillow>=13.0.0",
+    "python-dotenv>=1.2.4",
+    "python-multipart>=0.0.34",
+    "uvicorn[standard]>=0.54.0",
+]
