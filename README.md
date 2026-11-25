@@ -36,14 +36,14 @@ cd web && deno install
 ## Run (development: two terminals)
 
 ```bash
-uv run uvicorn server.main:app --reload --port 8000
+uv run python -m server --reload
 ```
 
 ```bash
 cd web && deno task dev
 ```
 
-Open <http://localhost:5173>. Vite forwards `/api` and `/uploads` to uvicorn on port 8000.
+Open <http://localhost:5173>. Vite forwards `/api` and `/uploads` to uvicorn on `PORT` from `.env`.
 
 ## Run (single server)
 
@@ -52,7 +52,7 @@ deno task serve
 ```
 
 Builds the React app into `web/dist`, then starts uvicorn, which serves both the page and the API.
-Open <http://localhost:8000>. Re-run it after frontend changes (it serves a fixed build, no hot reload).
+Open `http://localhost:<PORT>` (`PORT` in `.env`, default 8000). Re-run it after frontend changes (it serves a fixed build, no hot reload).
 
 To only build (for example, before starting uvicorn yourself):
 

@@ -1,4 +1,4 @@
-"""FastAPI app. Run with: uv run uvicorn server.main:app --reload --port 8000"""
+"""FastAPI app. Run with: uv run python -m server --reload (listens on PORT from .env)"""
 
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import FileResponse, JSONResponse

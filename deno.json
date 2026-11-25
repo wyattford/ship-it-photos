@@ -5,8 +5,8 @@
       "command": "cd web && deno task build"
     },
     "serve": {
-      "description": "Build the React app, then serve it and the API from uvicorn on port 8000",
-      "command": "deno task build && uv run uvicorn server.main:app --port 8000"
+      "description": "Build the React app, then serve it and the API from uvicorn on PORT from .env",
+      "command": "deno task build && uv run python -m server"
     }
   }
 }
