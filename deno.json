@@ -1,0 +1,12 @@
+{
+  "tasks": {
+    "build": {
+      "description": "Build the React app into web/dist",
+      "command": "cd web && deno task build"
+    },
+    "serve": {
+      "description": "Build the React app, then serve it and the API from uvicorn on port 8000",
+      "command": "deno task build && uv run uvicorn server.main:app --port 8000"
+    }
+  }
+}

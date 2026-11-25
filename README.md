@@ -48,10 +48,17 @@ Open <http://localhost:5173>. Vite forwards `/api` and `/uploads` to uvicorn on 
 ## Run (single server)
 
 ```bash
-cd web && deno task build && cd .. && uv run uvicorn server.main:app --port 8000
+deno task serve
 ```
 
-Open <http://localhost:8000>. uvicorn serves the built React app too.
+Builds the React app into `web/dist`, then starts uvicorn, which serves both the page and the API.
+Open <http://localhost:8000>. Re-run it after frontend changes (it serves a fixed build, no hot reload).
+
+To only build (for example, before starting uvicorn yourself):
+
+```bash
+deno task build
+```
 
 ## Files
 | Path | What |
