@@ -5,17 +5,23 @@ import { useAuth } from '../auth'
 
 export function Carousel({ photos, full = false }: { photos: Photo[]; full?: boolean }) {
   const [i, setI] = useState(0)
-  const photo = photos[i]
-  if (!photo) return null
+  const [warm, setWarm] = useState(false) // pointer or focus is here, so fetch the neighbors before they slide in
+  if (photos.length === 0) return null
   return (
-    <div className={`carousel ${full ? 'carousel-full' : ''}`}>
-      <img
-        src={full ? photo.url : photo.thumb_url}
-        alt=""
-        width={photo.width}
-        height={photo.height}
-        loading="lazy"
-      />
+    <div className={`carousel ${full ? 'carousel-full' : ''}`}
+      onPointerEnter={() => setWarm(true)} onFocus={() => setWarm(true)}>
+      <div className="carousel-track" style={{ transform: `translateX(${-100 * i}%)` }}>
+        {photos.map((p, k) => (
+          <img
+            key={p.id}
+            src={full ? p.url : p.thumb_url}
+            alt=""
+            width={p.width}
+            height={p.height}
+            loading={warm && Math.abs(k - i) <= 1 ? 'eager' : 'lazy'}
+          />
+        ))}
+      </div>
       {photos.length > 1 && (
         <>
           <button
@@ -80,16 +86,27 @@ export function Byline({ post }: { post: Post }) {
   )
 }
 
+function CommentIcon() {
+  return (
+    <svg viewBox="0 0 16 16" aria-hidden>
+      <path d="M2 2.5h12v8.5H7.5L4 14v-3H2z" />
+    </svg>
+  )
+}
+
 export default function PostCard({ post, onChange }: { post: Post; onChange: (p: Post) => void }) {
   return (
     <article className="card">
-      <Byline post={post} />
-      <Link to={`/p/${post.id}`}><Carousel photos={post.photos} /></Link>
-      <div className="card-body">
+      <Link to={`/p/${post.id}`} className="card-media"><Carousel photos={post.photos} /></Link>
+      <div className="card-info">
+        <Byline post={post} />
         {post.caption && <p className="caption clamp">{post.caption}</p>}
         <div className="actions">
           <LikeButton post={post} onChange={onChange} />
-          <Link to={`/p/${post.id}`} className="comments-link">💬 {post.comment_count}</Link>
+          <Link to={`/p/${post.id}`} className="comments-link"
+            aria-label={`${post.comment_count} comment${post.comment_count === 1 ? '' : 's'}`}>
+            <CommentIcon /> {post.comment_count}
+          </Link>
         </div>
       </div>
     </article>

@@ -21,12 +21,12 @@ function Header() {
     <header className="topbar">
       <div className="topbar-inner">
         <Link to="/" className="brand">
-          <span className="brand-mark" aria-hidden>◐</span> Ship It Photos
+          Ship It Photos
         </Link>
         <nav className="nav">
           {user ? (
             <>
-              <Link to="/new" className="btn btn-primary">+ New post</Link>
+              <Link to="/new" className="btn btn-primary">New post</Link>
               <Link to={`/u/${user.username}`} className="nav-user">@{user.username}</Link>
               <button className="btn btn-ghost" onClick={logout}>Log out</button>
             </>

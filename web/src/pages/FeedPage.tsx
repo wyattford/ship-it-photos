@@ -18,7 +18,7 @@ export default function FeedPage() {
   }, [text, q, setParams])
 
   return (
-    <>
+    <div className="feed">
       <div className="search">
         <input
           type="search"
@@ -30,7 +30,7 @@ export default function FeedPage() {
         />
       </div>
       {q && <p className="muted">Results for “{q}”</p>}
-      <PostGrid key={q} q={q} emptyText={q ? 'No posts match that search.' : 'No posts yet. Be the first!'} />
-    </>
+      <PostGrid key={q} q={q} layout="rows" emptyText={q ? 'No posts match that search.' : 'No posts yet. Be the first!'} />
+    </div>
   )
 }

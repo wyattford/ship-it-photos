@@ -3,7 +3,17 @@ import { api, type Post } from '../api'
 import PostCard from './PostCard'
 
 // Loads posts page by page ("Load more") for the feed, search and profile pages.
-export default function PostGrid({ q, user, emptyText }: { q?: string; user?: string; emptyText: string }) {
+export default function PostGrid({
+  q,
+  user,
+  emptyText,
+  layout = 'grid',
+}: {
+  q?: string
+  user?: string
+  emptyText: string
+  layout?: 'grid' | 'rows' // rows = one wide post per line (home feed)
+}) {
   const [posts, setPosts] = useState<Post[]>([])
   const [next, setNext] = useState<number | null>(null)
   const [loading, setLoading] = useState(true)
@@ -37,7 +47,7 @@ export default function PostGrid({ q, user, emptyText }: { q?: string; user?: st
 
   return (
     <>
-      <div className="grid">
+      <div className={layout}>
         {posts.map((p) => <PostCard key={p.id} post={p} onChange={update} />)}
       </div>
       <div className="center">
