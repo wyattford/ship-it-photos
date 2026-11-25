@@ -1,5 +1,13 @@
 {
   "tasks": {
+    "check": {
+      "description": "Test the database connection (like npm run check)",
+      "command": "uv run python scripts/check.py"
+    },
+    "create-db": {
+      "description": "Create DB_NAME on the class server (like npm run create-db)",
+      "command": "uv run python scripts/create_db.py"
+    },
     "build": {
       "description": "Build the React app into web/dist",
       "command": "cd web && deno task build"

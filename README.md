@@ -15,11 +15,11 @@ uv sync
 ```
 
 ```bash
-uv run python scripts/create_db.py
+deno task create-db
 ```
 
 ```bash
-uv run python scripts/check.py
+deno task check
 ```
 
 ```bash
